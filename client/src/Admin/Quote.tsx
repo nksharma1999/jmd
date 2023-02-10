@@ -30,8 +30,11 @@ export const Quote = () =>{
         getUserData();
     },[]);
 
+    const returnNumber = (userNumber:Number) =>{
+        return "tel:" + userNumber.toString();
+    }
     return <div className="container-fluid">
-        {data.map((val,index)=>{
+        {/* {data.map((val,index)=>{
             return <div key={index}>
                 <p>Car Type</p>
                 <h3>{val.carType.manufacturer} , {val.carType.model} , {val.carType.fuel}</h3>
@@ -39,7 +42,33 @@ export const Quote = () =>{
                 <p>Status: {val.status}</p>
 
             </div>
-        })}
-        <Outlet/>
+        })} */}
+        <table className="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Manufacturer</th>
+                <th scope="col">Model</th>
+                <th scope="col">Fuel</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {data.map((val,index)=>{
+                    return <tr>
+                        <td>{index}</td>
+                        <td>{val.carType.manufacturer}</td>
+                        <td>{val.carType.model}</td>
+                        <td>{val.carType.fuel}</td>
+                        <td><a href={returnNumber(val.userNumber)} >{val.userNumber.valueOf()}  </a></td>
+                        <td><button className='btn btn-primary'> {val.status} </button></td>
+                    </tr>
+                })
+
+                }
+            </tbody>
+        </table>
     </div>
 }
