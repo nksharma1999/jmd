@@ -1,12 +1,14 @@
 import {UserModel} from '../Model/users.js';
 import  CryptoJS from 'crypto-js';
+import dotenv from 'dotenv';
+dotenv.config();
 export const createNewUser = async(req,res)=>{
     console.log(req.body);
     const {username,phoneNumber,password}=req.body;
     const newUser = new UserModel({
         username:username,
         phoneNumber:phoneNumber,
-        password:CryptoJS.AES.encrypt(password,"adgsibogdi3ydsy").toString()
+        password:CryptoJS.AES.encrypt(password,process.env.USERPASS).toString()
     });
     try{
         await newUser.save();
