@@ -1,5 +1,6 @@
 import {QuoteModel} from '../Model/quote.js';
-import {UserModel} from '../Model/users.js';
+import {jmdUserModel} from '../Model/users.js';
+import {ourServiceModel} from '../Model/ourService.js';
 import  CryptoJS from 'crypto-js';
 import JWT from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -17,10 +18,10 @@ export const newQuote =async (req,res)=>{
 
 export const loginUser = async(req,res)=>{
     console.log(req.body);
-    const {phoneNumber,password} = req.body;
-    if(phoneNumber && password){
+    const {contact,password} = req.body;
+    if(contact && password){
         try{
-        const userDetail = await UserModel.findOne({phoneNumber:phoneNumber});
+        const userDetail = await jmdUserModel.findOne({contact:contact});
         const hashedPassword = CryptoJS.AES.decrypt(userDetail.password,process.env.USERPASS);
         const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
         if(originalPassword!==password){
@@ -37,4 +38,36 @@ export const loginUser = async(req,res)=>{
         res.status(401).json({msg:'Please Enter phone number / password!'});
     }
     
+}
+
+
+export const getOurService = async(req,res)=>{
+        // console.log(req.body);
+        const {carTypeSelection, location,serviceType} = req.body;
+        let resultData = [];
+        try{
+            const data = await ourServiceModel.find({location:location,serviceType:serviceType}, { _id: 0,__v:0,location:0,country:0,createdAt:0} );
+            // console.log(data);
+            for(let i=0;i<data.length;i++){
+                const {carType, os_id,serviceType,serviceName}=data[i];
+                // const filterData = {...other}
+                let filterCarType = [];
+                // console.log(carType);
+                for(let j=0;j<carType.length;j++){
+                    if(carType[j].manufacturer===carTypeSelection.manufacturer && carType[j].model===carTypeSelection.model && carType[j].fuel===carTypeSelection.fuel){
+                        filterCarType.push(carType[j]);
+                    }
+                }
+                resultData.push({
+                    os_id,
+                    serviceType,
+                    serviceName,
+                    carType:filterCarType,
+                });
+            }
+            res.status(200).json(resultData);
+        }catch(err){
+            console.log(err);
+            res.status(401).json({msg:'data not found'});
+        }
 }

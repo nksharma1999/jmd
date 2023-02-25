@@ -4,6 +4,7 @@ import { Category } from "./Category";
 import { Quote } from "./Quote";
 import { HowWork } from "./HowWork";
 import { ReviewSection } from "./ReviewSection";
+import { Testimonial } from "./Testimonial";
 interface propsHome {
   showHome: boolean;
   changeHomePage: (element: boolean) => void;
@@ -21,13 +22,13 @@ export const Home = ({ showHome, changeHomePage }: propsHome) => {
   const ourService = [
     {
       icon: "fas fa-tools",
-      url: "reparing-and-services",
-      show: "Reparing & Services"
+      url: "repairing-and-services",
+      show: "Repairing & Services"
     },
     {
       icon: "fas fa-car-crash",
       url: "denting-and-painting",
-      show: " Denting & Paining"
+      show: " Denting & Painting"
     },
     {
       icon: "fas fa-car",
@@ -90,20 +91,23 @@ export const Home = ({ showHome, changeHomePage }: propsHome) => {
           <Quote />
         </div>
       </div>
-
-      <div className="paddingAllBox">
-        <h3 style={{ textAlign: "center" }}>Customer Reviews</h3>
-        <ReviewSection />
-      </div>
-
-      <div className="row">
-        <div style={style} className=" paddingAllBox bgColor">
-          <h1>Benifits And Perks Section </h1>
+      <div className="paddingAllBox ">
+        <div className="row shadow p-2" style={{color:"#FFFFFF",padding:"8px",backgroundColor:"#FF0000",borderRadius:"40px"}}>
+          <div className="col-4">Auto repair on YOUR Schedule</div>
+          <div className="col-4" style={{textAlign:"center"}}>Full-Time Certified Mechanics</div>
+          <div className="col-4" style={{textAlign:"right"}}>1 year / 12,000 mile warranty</div>
         </div>
       </div>
 
+      <div className="row">
+        <div className=" paddingAllBox bgColor">
+          <h3 style={{ textAlign: "center" }}>Customer Reviews</h3>
+          <ReviewSection />
+        </div>
+      </div>
+      
       <div style={{ textAlign: "center" }} className="paddingAllBox">
-        <h1>Our Servicess in {param.location} </h1>
+        <h1>Our Services in {param.location} </h1>
         <div className="row">
           {ourService.map((val, index) => {
             return (
@@ -134,6 +138,10 @@ export const Home = ({ showHome, changeHomePage }: propsHome) => {
           {/* <p>How We Work</p> */}
           <HowWork />
         </div>
+      </div>
+      <div style={{ textAlign: "center" }} className="paddingAllBox">
+        <h4>What our Customers Say</h4>
+        <Testimonial />
       </div>
 
       <div style={{ textAlign: "center" }} className="paddingAllBox">

@@ -8,7 +8,7 @@ export const NavBar = () => {
   const { authData, updateAuth } = useContextData();
   const {adminAuthData, adminAuthUpdate} = useAdminAuth();
   return (
-    <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <nav style={{zIndex:"2"}} className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <NavLink className="navbar-brand navBarElement" to="/">
           Logo
@@ -85,7 +85,7 @@ export const NavBar = () => {
             ) : (
               <button
                 onClick={() => {
-                  {adminAuthData.auth ?adminAuthUpdate({auth:false,username:''}) :updateAuth({ auth: false, username: "" })}
+                  {adminAuthData.auth ? adminAuthUpdate({auth:false,username:''}) :updateAuth({auth:false,username:''})}
                 }}
                 className="btn navBarElement"
               >
@@ -104,7 +104,9 @@ export const NavBar = () => {
             {
               adminAuthData.auth && <button className="btn navBarElement" disabled>Admin: {adminAuthData.username}</button>
             }
+            <button onClick={()=>navigate("viewcart")} className="btn navBarElement"> <i className="fas fa-shopping-cart"></i> Cart</button>
           </div>
+
         </div>
       </div>
     </nav>

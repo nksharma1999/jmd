@@ -1,6 +1,175 @@
 @charset "UTF-8";
 
 
+
+/******** Footer *****/
+#navbarDropdown{
+  color: white;
+}
+.logo_city{
+  font-size: 25px;
+  font-weight: 700;
+  display: flex;
+  text-align: left;
+}
+.fa-brands{
+  font-size: 30px;
+  margin-left: 30px;
+}
+li{
+  padding: 5px;
+}
+.footer_serviceText{
+  font-size: 15px;
+  font-weight:bold
+}
+ul{
+  
+  list-style-type: none;
+  text-align: left;
+}
+.social{
+  margin-top: 50px;
+  text-align: right;
+}
+
+.footer_Service{
+  text-align: center;
+}
+.officeDetail_text{
+  margin-top: -15px;
+}
+.officeDetails{
+  margin-top: 50px;
+}
+
+/****** Testimonial Card ****/
+.testimonialCard{
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  width: 400px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/************ Cart footer *****/
+
+@media (max-width:768px){
+  #pararentCartBox{
+    display: none;
+  }
+  .cardBox{
+    margin-top: 80px;
+  }
+}
+@media (min-width:768px){
+  #cartShowinPhoneView{
+    display: none;
+  }
+}
+#cartShowinPhoneView{
+  background-color: #304767;
+  width: 100%;
+  padding-top: 10px;
+  /* margin-top: 300px; */
+  padding-left: 10px;
+  padding-right: 10px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  color: white;
+}
+/************ ViewCart *****/
+#viewCartBox{
+  /* z-index: 2;
+  position: fixed;
+  /* float: revert; */
+  /* top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: block !important; */ 
+}
+.viewInnerCard{
+  width: min(700px,100%);
+  margin: auto;
+}
+/*********Payment *****/
+#paymentPage {
+  z-index: 2;
+  position: fixed;
+  /* float: revert; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: block !important;
+}
+
+/********** Card ****/
+.cardBox {
+  /* width: 100%; */
+  background-color: rgb(253, 213, 220);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 220px;
+}
+.serviceInfo {
+  margin: auto 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.serviceItem {
+  border: 2px solid black;
+  padding: 5px;
+}
+.serviceItem button {
+  margin-left: 10px;
+  color: red;
+  /* float: right; */
+}
+.card-inner {
+  height: 180px;
+  overflow-y: scroll;
+  overflow-x: none;
+  /* color: white; */
+}
+.card-inner::-webkit-scrollbar {
+  display: none;
+}
+/* .card-inner button {
+  z-index: 1;
+} */
+.selected-service {
+  background-color: blue;
+  color: white;
+}
+#selectCartypeOuterBox {
+  z-index: 2;
+  position: fixed;
+  /* float: revert; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: block !important;
+}
+.selectinInnerBox {
+  /* position: relative; */
+  width: min(600px, 100%);
+  margin: 120px auto auto auto;
+}
+/************ service Item List ****/
+.serviceItemList {
+  background-color: white;
+}
+
+
 /********* Admin Page **********/
 .adminNav{
   width: 100%;
@@ -184,7 +353,7 @@
 .star-style {
   /* color: #651616; */
   /* width: 20px; */
-  color: blue;
+  color: #FF0000;
   font-size: 20px;
 }
 .uncheck-star {
@@ -259,7 +428,8 @@
   /* background-color: transform; */
   margin-top: 30px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: larger;
   counter-reset: container 0;
   color: black;
   width: min(100%, 700px);
@@ -270,21 +440,20 @@
   margin-left: 40px;
   margin-top: 50px;
   counter-increment: container 1;
-  color: white;
+  color: #000000;
 }
 .progress-bar li::before {
   content: counter(container);
   line-height: 25px;
   text-align: center;
   position: absolute;
-  height: 25px;
-  width: 25px;
-  border: 1px solid #4f6581;
+  height: 29px;
+  width: 29px;
   border-radius: 50%;
-  left: -40px;
+  left: -41px;
   top: -5px;
-  z-index: 10;
-  background-color: #304767;
+  z-index: 1;
+  background-color: #FFFFFF;
 }
 .progress-bar li::after {
   content: "";
@@ -292,7 +461,7 @@
   height: 90px;
   width: 2px;
   background-color: #4f6581;
-  z-index: 1;
+  z-index: 0;
   left: -27px;
   top: -70px;
 }

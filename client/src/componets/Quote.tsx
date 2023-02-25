@@ -91,12 +91,12 @@ export const Quote = () => {
   const Fuel = ["diseal", "petrol", "electric", "CNG"];
 
   return (
-    <div className="container-fluid container-quoteBox">
+    <div className="container-fluid container-quoteBox" >
       {!showManu && !showModel && !showFuel && (
-        <div className="quoteBox shadow-lg p-3 mb-5 bg-body rounded">
-          <p>Get a free quote</p>
-          <p>City: {param.location}</p>
-          <button className="btn-dark" onClick={() => setManu(!showManu)}>
+        <div className="quoteBox shadow-lg p-3 mb-5 bg-body rounded" >
+          <h3>Get your car serviced in no time</h3>
+          {/* <p>City: {param.location}</p> */}
+          <button style={{backgroundColor:"#FF0000",marginTop:"30px"}} className="btn-danger" onClick={() => setManu(!showManu)}>
             {!showOnButton ? (
               "Select Manufacturer"
             ) : (
@@ -104,6 +104,7 @@ export const Quote = () => {
                 {selected.manuf} , {selected.model} , {selected.fuel}
               </span>
             )}
+            <i className="fa-solid fa-chevron-down" style={{float:"right",marginTop:"5px",fontSize:"20px"}}></i>
           </button>
           {/* <Category selectedFilter={selectedFilter} /> */}
           <br />
@@ -124,13 +125,13 @@ export const Quote = () => {
           </div>
 
           <button
-            className="btn"
-            style={{ backgroundColor: "rgb(209, 25, 25)", color: "white" }}
+            className="btn btn-dark"
+            style={{ color: "white" }}
             onClick={handleSubmit}
           >
             Submit
           </button>
-          <p>Contact Us: +91 2324222352</p>
+          <p>Reach us: +91-7999832822</p>
           {/* <p>
             {selected.manuf} , {selected.model} , {selected.fuel}
           </p> */}

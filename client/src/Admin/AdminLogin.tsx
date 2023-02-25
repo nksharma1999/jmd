@@ -1,6 +1,6 @@
 import  Axios from "axios";
-import { useEffect, useRef } from "react";
-import { Navigate, Outlet ,useNavigate} from "react-router-dom"
+import {  useRef } from "react";
+import {useNavigate} from "react-router-dom"
 import {useAdminAuth} from '../context/Admin';
 export const AdminLogin = ()=>{
     const {adminAuthUpdate} =useAdminAuth();
@@ -14,7 +14,7 @@ export const AdminLogin = ()=>{
         return;
       }
       const adminData={
-        phoneNumber:phoneNumber.current.value,
+        contact:phoneNumber.current.value,
         password:password.current.value,
       }
       Axios.post('http://localhost:3002/admin/login',adminData).then(res=>{

@@ -57,7 +57,7 @@ export const Quote = () =>{
             </thead>
             <tbody>
                 {data.map((val,index)=>{
-                    return <tr>
+                    return <tr key={index}>
                         <td>{index}</td>
                         <td>{val.carType.manufacturer}</td>
                         <td>{val.carType.model}</td>

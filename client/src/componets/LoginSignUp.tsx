@@ -31,7 +31,7 @@ export const LoginSignUp = () => {
       return;
     }
     const authData ={
-      phoneNumber:phoneNumber.current.value,
+      contact:phoneNumber.current.value,
       password:password.current.value
     }
     Axios.post('http://localhost:3002/user/login',authData).then((res)=> {

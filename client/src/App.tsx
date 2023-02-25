@@ -15,6 +15,9 @@ import {AdminAuth} from './Admin/AdminAuth';
 import {AdminLogin} from './Admin/AdminLogin';
 // import { AdminProvider } from "./context/Admin";
 import { AdminHome } from "./Admin/AdminHome";
+import { ViewCart } from "./componets/ViewCart";
+import { OtpBasedLogin } from "./componets/OTPLogin";
+import { Footer } from "./componets/Footer";
 function App() {
   const [showHome, setHome] = useState(false);
   const changeHomePage = (element: boolean) => {
@@ -46,6 +49,7 @@ function App() {
             </AuthRequired>
           }
         />
+        <Route path="viewcart" element={<ViewCart />}></Route>
         
         <Route path="admin" element={<AdminLogin />} />
         <Route path="admin/home" element={<AdminAuth><AdminHome/></AdminAuth>}>
@@ -56,10 +60,11 @@ function App() {
           <Route path="accepted" element={<h1>Accepted Section</h1>}/>
 
         </Route>
-        <Route path="login" element={<LoginSignUp />} />
+        <Route path="login" element={<OtpBasedLogin />} />
         <Route path="signup" element={<LoginSignUp />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer />
     </>
   );
 }

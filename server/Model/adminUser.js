@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const jmdUserSchema = new mongoose.Schema({
-  user_id: {
+const adminSchema = new mongoose.Schema({
+  admin_id: {
     type: String,
     required: true,
     unique: true,
@@ -17,21 +17,21 @@ const jmdUserSchema = new mongoose.Schema({
   },
   email: {
     type: String,
+    required: true,
   },
   password: {
     type: String,
     required: true,
   },
-  orders: [
-    {
-      type: String,
-    },
-  ],
-  address:[{}],
+  userLevel: {
+    type: Number,
+    default: 1,
+  },
+  
   createdAt: {
     type: Date,
     default: Date.now(),
   },
 });
 
-export const jmdUserModel = mongoose.model("jmdUser", jmdUserSchema);
+export const AdminModel = mongoose.model("admin", adminSchema);
